@@ -26,24 +26,24 @@ def entry(request):
         password = request.POST['secure_pin']
         age = request.POST['birthday']
         print(form)
-        
+
         print(1)
-        username = first_name+last_name            
+        username = first_name+last_name
         if User.objects.filter(username=username).exists():
             user = auth.authenticate(
-            request, username=username, password=password)
+                request, username=username, password=password)
             auth.login(request, user)
             return redirect('vote')
 
         else:
 
             user = User.objects.create_user(
-                username=username, first_name=first_name, last_name=last_name, password=password)
+                username=username, first_name=first_name, last_name=last_name, password=password, age=age, email=email)
             user.save()
-            user = auth.authenticate(request, username=username, password=password)
+            user = auth.authenticate(
+                request, username=username, password=password)
             auth.login(request, user)
-            form.user_id=request.user
-            
+            form.user_id = request.user
 
             return redirect('vote')
 
@@ -58,7 +58,9 @@ def vote(request):
     choice = None
     a = Votes.objects.filter(user=user)
     print(len(a))
+    l=[len(Votes.objects.filter(vote='Donald Trump')), len(Votes.objects.filter(vote='Joe Biden'))]
     if len(a) == 0:
+
         if 'biden' in request.POST:
             v = Votes()
             v.user = user
@@ -78,7 +80,7 @@ def vote(request):
         choice = Votes.objects.get(user=user)
         
 
-    return render(request,  'vote.html', {'choice': choice})
+    return render(request,  'vote.html', {'choice': choice, 'l':l})
 
 
 # Create your views here.

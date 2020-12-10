@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='{% static "hello.css" %}'>
 
-    <title>{% block title %} {% endblock title %}</title>
+    <title>Entry</title>
 </head>
 
 <body style="background-color:mediumblue">
@@ -40,14 +40,14 @@
 
     <div class='container-fluid'>
         <div class='row justify-content-center'>
-            <main class='col-md-9' style="background-color: rgb(13, 29, 173);">
-                <form method="post">
+            <main class='col-md-8' style="background-color: rgb(13, 29, 173);">
+                <form method="post" class="bg-light">
                     {% csrf_token %}
 
                     {{ form.as_p }}
                     <br>
 
-                    <button class="btn btn-primary" name="submit" type="submit">
+                    <button class="btn btn-primary " name="submit" type="submit">
                         Enter
                     </button>
                 </form>
@@ -60,10 +60,10 @@
     <!-- Bootstrap CSS -->
     <footer class='bg-danger'>
 
-        <nav class="navbar navbar-expand navbar-dark bg-dark">
-            
+        <nav class="navbar navbar-expand navbar-dark bg-dark fixed-bottom ">
+            <span class="bg=light">quadratoms 2020</span>
           </nav>
-
+          
     </footer>
 
 

@@ -1,0 +1,115 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href='{% static "hello.css" %}'>
+
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+
+<body style="background-color:mediumblue">
+    <header>
+        <div class='container-fluid'>
+
+            <nav class="navbar navbar-light bg-light row">
+                <a class="navbar-brand col" href="/">
+                    <img src='{% static "logo.png" %}' width="60" height="60" alt="whotnews icon">
+                    <span class="text-danger" style="font-weight: 800;">AMERICA ELECTION</span>
+                </a>
+                <div>
+                    <img src='{% static "us.png" %}' width="200" height="" alt="ELECTION IS ONGOING">
+                    <br>
+
+                </div>
+            </nav>
+
+        </div>
+        <div class="pt-1 py-1 bg-success">
+
+            <nav class="navbar navbar-expand-md navbar-dark bg-danger">
+
+            </nav>
+        </div>
+    </header>
+
+    <div class='container-fluid'>
+        <div class=' justify-content-center'>
+            <main class= style="background-color: rgb(13, 29, 173);">
+                <div class="row justify-content-center">
+                    <div class="col-4 bg-light d-flex justify-content-center">
+                        <img src='{% static "trump.jpg" %}' width="80%" >
+                        <form method="post">
+                            {% csrf_token %}
+                            <button class="btn btn-danger btn" type="submit" name="trump">DONALD TRUMP</button>
+                        </form>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <span style="font-size: xx-large; font-weight:900">vs</span>
+                    </div>
+                    <div class="col-4 bg-light d-flex justify-content-center">
+                        <img src='{% static "biden.jpg" %}' width="80%" >
+                        <form method="post">
+                            {% csrf_token %}
+                            <button class="btn btn-danger btn" type="submit" name="biden">JOE BIDEN</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div>
+                    <p>
+instruction
+                    </p>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-4" style="font-size: medium;">
+                            <p class=" m-3" style="font-weight: 700;">FIRST NAME:</p>
+                            <p class=" m-3" style="font-weight: 700;">LAST NAME:</p>
+                            <p class=" m-3" style="font-weight: 700;">AGE:</p>
+                            <p class=" m-3" style="font-weight: 700;">EMAIL:</p>
+                            <p class=" m-3" style="font-weight: 700;">VOTED FOR :</p>
+                            <p class=" m-3" style="font-weight: 700;"></p>
+                        </div>
+                        <div class="col-4" style="font-size: medium;">
+                            <p class=" m-3" style="font-weight: 700;">{{ user.first_name }}</p>
+                            <p class=" m-3" style="font-weight: 700;">{{ user.last_name }}</p>
+                            <p class=" m-3" style="font-weight: 700;">{{ user.birthday }}</p>
+                            <p class=" m-3" style="font-weight: 700;">{{ user.email }}</p>
+                            <p class=" m-3" style="font-weight: 700;">{{ choice }}</p>
+                            <p class=" m-3" style="font-weight: 700;"></p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+
+        </div>
+    </div>
+    <!-- page container ends -->
+    <!-- Bootstrap CSS -->
+    <footer class='bg-danger'>
+
+        <nav class="navbar navbar-expand navbar-dark bg-dark fixed-bottom ">
+            <span class="bg=light">quadratoms 2020</span>
+          </nav>
+
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src='{% static "jquery.js" %}'></script>
+    <script src='{% static "proper.js" %}'></script>
+    <script src='{% static "hello.js" %}'></script>
+</body>
+
+</html>
